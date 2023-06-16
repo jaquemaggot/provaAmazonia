@@ -21,6 +21,7 @@ Siga as etapas abaixo para executar o projeto:
 
 2. Navegue até o diretório do projeto:
 
+    ```bash
     cd provaAmazonia
 
 3. Dependências:
@@ -34,8 +35,10 @@ Siga as etapas abaixo para executar o projeto:
 
 5. Execute o comando:
 
+    ```bash
     php artisan serve
 
 6. Link Postman para que possa testar o projeto com as rotas e valores de teste.
 
+    ```bash
     https://api.postman.com/collections/3894449-2b37d499-0710-427b-8eaa-e75ba28e441f?access_key=PMAT-01H30NN6DP0RFBVD3HZ9NZR058
