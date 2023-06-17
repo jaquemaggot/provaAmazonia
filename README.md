@@ -31,7 +31,7 @@ Siga as etapas abaixo para executar o projeto:
     - Execute o seguinte comando para instalar as dependências:
         composer install
 
-4. Altere o arquivo .env com os dados de conexão com o Banco de Dados, neste projeto foi utilizado o MYSQL.
+4. Crie o arquivo .env utilizando o arquivo .env.example, com os dados de conexão com o Banco de Dados, neste projeto foi utilizado o MYSQL.
 
 5. Execute o comando:
 
