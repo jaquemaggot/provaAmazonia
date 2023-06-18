@@ -10,27 +10,31 @@ use App\Models\User;
 class UserController extends Controller
 {
     private $_ViaCepController;
-    public function __construct() {
+    public function __construct()
+    {
         $this->_ViaCepController = new ViaCepController;
     }
 
-    public function GetAll(){
+    public function GetAll()
+    {
         $users = User::all();
         return $users;
     }
 
-    public function GetbyId($id){
-        try{
+    public function GetbyId($id)
+    {
+        try {
             $this->ValidateId($id);
             $user = User::find($id);
             return $user;
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json(['message' => $ex->getMessage()], 400);
         }
     }
 
-    public function Insert(Request $request){
-        try{
+    public function Insert(Request $request)
+    {
+        try {
             $user = new User;
 
             $zip_code = $this->ValidateZipCode($request->zip_code);
@@ -38,7 +42,7 @@ class UserController extends Controller
             $this->ValidateAge($request->birthdate);
             $this->ValidateCPFFormat($request->cpf);
             $this->ValidateCpf($request->cpf);
-            
+
             $user->name = $request->name;
             $user->email = $request->email;
             $user->cpf = $request->cpf;
@@ -53,13 +57,14 @@ class UserController extends Controller
             $user->save();
 
             return $user;
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json(['message' => $ex->getMessage()], 400);
         }
     }
 
-    public function Update($id,Request $request){
-        try{
+    public function Update($id, Request $request)
+    {
+        try {
 
             $this->ValidateId($id);
 
@@ -68,11 +73,11 @@ class UserController extends Controller
             $zip_code = $this->ValidateZipCode($request->zip_code);
             $this->ValidateDateFormat($request->birthdate);
             $this->ValidateAge($request->birthdate);
-            
+
 
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->birthdate= $request->birthdate;
+            $user->birthdate = $request->birthdate;
             $user->zip_code = $request->zip_code;
             $user->address = $zip_code->logradouro;
             $user->neighborhood = $zip_code->bairro;
@@ -83,44 +88,55 @@ class UserController extends Controller
             $user->save();
 
             return $user;
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json(['message' => $ex->getMessage()], 400);
         }
     }
 
-    public function Delete($id){
-        try{
-            $this->ValidateId($id);
+    public function delete($id)
+    {
+        try {
+            $this->validateId($id);
             $user = User::find($id);
+
+            if (!$user) {
+                throw new Exception('Usuário não encontrado.');
+            }
+
             $user->delete();
-        }catch(Exception $ex){
-            return response()->json(['message' => $ex->getMessage()], 400);
+
+            return response()->json('Usuário removido com sucesso.', 200);
+        } catch (Exception $ex) {
+            return response()->json($ex->getMessage(), 400);
         }
     }
 
-    private function ValidateZipCode($zip_code_user){
+    private function ValidateZipCode($zip_code_user)
+    {
         $zip_code = $this->_ViaCepController->GetZipCode($zip_code_user);
 
-        if($zip_code->uf != 'AM'){
-          throw new Exception('Usuário precisa ser do estado do Amazonas');
+        if ($zip_code->uf != 'AM') {
+            throw new Exception('Usuário precisa ser do estado do Amazonas');
         }
         return $zip_code;
     }
 
-    private function ValidateAge($birtdate_user){
+    private function ValidateAge($birtdate_user)
+    {
 
         $birtdate = new DateTime($birtdate_user);
-        
+
         $dateNow = new DateTime();
 
         $diffYear = $dateNow->diff($birtdate)->y;
 
         if ($diffYear < 18) {
-           throw new Exception('Usuário é menor de 18 anos');
+            throw new Exception('Usuário é menor de 18 anos');
         }
     }
 
-    private function ValidateDateFormat($birtdate){
+    private function ValidateDateFormat($birtdate)
+    {
 
         $dateTime = DateTime::createFromFormat('Y-m-d', $birtdate);
 
@@ -129,25 +145,28 @@ class UserController extends Controller
         }
     }
 
-    private function ValidateCpf($cpf){
+    private function ValidateCpf($cpf)
+    {
         $user = User::where('cpf', $cpf)->first();
-        if($user !== null){
+        if ($user !== null) {
             throw new Exception('Cpf já existe na base de dados');
-        } 
+        }
     }
 
-    private function ValidateId($id){
+    private function ValidateId($id)
+    {
         $user = User::find($id);
-        if($user == null){
+        if ($user == null) {
             throw new Exception('Id não encontrado na base de dados');
         }
     }
 
 
-    private function ValidateCPFFormat($cpf) {
- 
-        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
-         
+    private function ValidateCPFFormat($cpf)
+    {
+
+        $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+
         if (strlen($cpf) != 11) {
             throw new Exception('Cpf está no formato inválido');
         }
