@@ -41,9 +41,14 @@ Siga as etapas abaixo para executar o projeto:
 6. Execute o comando:
 
     ```bash
+    php artisan key:generate
+
+7. Execute o comando:
+
+    ```bash
     php artisan serve
 
-7. Link Postman para que possa testar o projeto com as rotas e valores de teste.
+8. Link Postman para que possa testar o projeto com as rotas e valores de teste.
 
     ```bash
     https://api.postman.com/collections/3894449-2b37d499-0710-427b-8eaa-e75ba28e441f?access_key=PMAT-01H30NN6DP0RFBVD3HZ9NZR058
