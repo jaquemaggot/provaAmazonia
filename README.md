@@ -48,10 +48,12 @@ Siga as etapas abaixo para executar o projeto:
     ```bash
     https://api.postman.com/collections/3894449-2b37d499-0710-427b-8eaa-e75ba28e441f?access_key=PMAT-01H30NN6DP0RFBVD3HZ9NZR058
 
-8. Links para acesso aos Diagramas:
+## Diagramas:
 
     ```bash
+    -Questão 7:
     https://drive.google.com/file/d/1GzoeaITCy-GIV6ho_nk3VfVr2oNP4z07/view?usp=sharing
 
+    -Questão 8:
     https://drive.google.com/file/d/1wh_6ie3Isu8GdS_tLnzlw0ZgjUb_-_Vj/view?usp=sharing
 
