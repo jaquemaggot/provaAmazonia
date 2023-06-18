@@ -56,4 +56,4 @@ Siga as etapas abaixo para executar o projeto:
     -Questão 8:
     https://drive.google.com/file/d/1wh_6ie3Isu8GdS_tLnzlw0ZgjUb_-_Vj/view?usp=sharing
 
-1. Os diagramas podem ser encontrados na pasta "diagrams" e também estão nos links acima.
+1. Os diagramas podem ser encontrados na pasta "diagrams" dentro da pasta principal do projeto, e também estão nos links acima.
