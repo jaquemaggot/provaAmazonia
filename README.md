@@ -34,16 +34,21 @@ Siga as etapas abaixo para executar o projeto:
 4. Crie o arquivo .env utilizando o arquivo .env.example, com os dados de conexão com o Banco de Dados, neste projeto foi utilizado o MYSQL.
 
 5. Execute o comando:
+    
+    ```bash
+    php artisan migrate
+
+6. Execute o comando:
 
     ```bash
     php artisan serve
 
-6. Link Postman para que possa testar o projeto com as rotas e valores de teste.
+7. Link Postman para que possa testar o projeto com as rotas e valores de teste.
 
     ```bash
     https://api.postman.com/collections/3894449-2b37d499-0710-427b-8eaa-e75ba28e441f?access_key=PMAT-01H30NN6DP0RFBVD3HZ9NZR058
 
-7. Links para acesso aos Diagramas:
+8. Links para acesso aos Diagramas:
 
     ```bash
     https://drive.google.com/file/d/1GzoeaITCy-GIV6ho_nk3VfVr2oNP4z07/view?usp=sharing
