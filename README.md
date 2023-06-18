@@ -50,7 +50,6 @@ Siga as etapas abaixo para executar o projeto:
 
 ## Diagramas:
 
-    ```bash
     -Questão 7:
     https://drive.google.com/file/d/1GzoeaITCy-GIV6ho_nk3VfVr2oNP4z07/view?usp=sharing
 
